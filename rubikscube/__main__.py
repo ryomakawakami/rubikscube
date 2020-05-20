@@ -9,4 +9,7 @@ if __name__ == '__main__':
     cube.turn("U")
     cube.turn("R'")
     cube.turn("U'")
+    cube.turn("x")
+    cube.turn("y")
+    cube.turn("z")
     cube.display()
