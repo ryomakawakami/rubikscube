@@ -53,10 +53,15 @@ class Cube:
                     continue
                 if len(move) == 2:
                     if move[1] == "'":
-                        moves.append(move)   # U'
+                        moves.append(move)      # U'
                         continue
                     if move[1] == "2":
                         moves.append(move[0])   # U2
+                        moves.append(move[0])
+                        continue
+                if len(move) == 3:
+                    if move[1] == "2" and move[2] == "'":
+                        moves.append(move[0])   # U2'
                         moves.append(move[0])
                         continue
 
@@ -73,6 +78,13 @@ class Cube:
                         continue
                     if move[1] == "2":
                         moves.append(t[0])          # u2
+                        moves.append(t[1])
+                        moves.append(t[0])
+                        moves.append(t[1])
+                        continue
+                if len(move) == 3:
+                    if move[1] == "2" and move[2] == "'":
+                        moves.append(t[0])          # u2'
                         moves.append(t[1])
                         moves.append(t[0])
                         moves.append(t[1])
