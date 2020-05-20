@@ -1,4 +1,5 @@
 import rubikscube.cube.constant as constant
+import string
 
 class Cube:
     def __init__(self):
@@ -40,3 +41,49 @@ class Cube:
 
         else:
             self.facelets = [self.facelets[i] for i in constant.MOVES[s[0]]]
+
+    def handScramble(self, s):
+        raw = s.strip().split(' ')
+        moves = []
+
+        for move in raw:
+            if move.startswith(('U', 'L', 'F', 'R', 'B', 'D', 'M', 'S', 'E', 'x', 'y', 'z')):
+                if len(move) == 1:
+                    moves.append(move)          # U
+                    continue
+                if len(move) == 2:
+                    if move[1] == "'":
+                        moves.append(move)   # U'
+                        continue
+                    if move[1] == "2":
+                        moves.append(move[0])   # U2
+                        moves.append(move[0])
+                        continue
+
+            if move.startswith(('u', 'l', 'f', 'r', 'b', 'd')):
+                t = constant.WIDE[move[0]]
+                if len(move) == 1:
+                    moves.append(t[0])              # u
+                    moves.append(t[1])
+                    continue
+                if len(move) == 2:
+                    if move[1] == "'":
+                        moves.append(t[0] + "'")    # u'
+                        moves.append(t[1] + "'")
+                        continue
+                    if move[1] == "2":
+                        moves.append(t[0])          # u2
+                        moves.append(t[1])
+                        moves.append(t[0])
+                        moves.append(t[1])
+                        continue
+
+
+            print("Error: " + move + " is invalid.")
+            return
+
+        for move in moves:
+            self.turn(move)
+                
+
+            

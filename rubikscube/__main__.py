@@ -1,15 +1,8 @@
-from rubikscube.cube.cube import Cube
+import rubikscube.cube.cube as cube
 
 if __name__ == '__main__':
     print("Cube")
 
-    cube = Cube()
-
-    cube.turn("R")
-    cube.turn("U")
-    cube.turn("R'")
-    cube.turn("U'")
-    cube.turn("x")
-    cube.turn("y")
-    cube.turn("z")
+    cube = cube.Cube()
+    cube.handScramble("x R2 F R F' R U2 r' U r U2 x'")
     cube.display()
