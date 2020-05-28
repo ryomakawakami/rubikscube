@@ -1,4 +1,4 @@
-import rubikscube.cube.constant as constant
+import facelet_rep.cube.constant as constant
 import string
 
 class Cube:

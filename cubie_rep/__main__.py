@@ -1,4 +1,4 @@
-import rubikscube.cubie_cube.cube as cubie
+import cubie_rep.cube.cube as cubie
 
 if __name__ == '__main__':
     print('Cube')

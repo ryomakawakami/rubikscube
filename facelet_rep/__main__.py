@@ -1,4 +1,4 @@
-import rubikscube.cube.cube as cube
+import facelet_rep.cube.cube as cube
 
 if __name__ == '__main__':
     print("Cube")
