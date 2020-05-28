@@ -15,21 +15,23 @@ class Cube:
         prod = constant.MOVES_C[moves[-1]]
         temp = [None for i in range(8)]
         for i in reversed(range(0, len(moves) - 1)):
-            for j, pair in enumerate(constant.MOVES_C[moves[i]]):
-                ori = (prod[pair[0]][1] + pair[1]) % 3
-                temp[j] = (prod[pair[0]][0], ori)
+            for j in range(8):
+                c, o = prod[j]
+                ori = (constant.MOVES_C[moves[i]][c][1] + o) % 3
+                temp[j] = (constant.MOVES_C[moves[i]][c][0], ori)
             prod = temp
         return prod
 
     def edgeMult(self, moves):
-        prod = constant.MOVES_E[moves[-1]]
+        prod = [(i, j) for i, j, _ in constant.MOVES_E[moves[-1]]]
         temp = [None for i in range(12)]
         for i in reversed(range(0, len(moves) - 1)):
-            for j, pair in enumerate(constant.MOVES_E[moves[i]]):
-                ori = (prod[pair[0]][1] + pair[1])
+            for j in range(12):
+                c, o = prod[j]
+                ori = constant.MOVES_E[moves[i]][c][1] + o
                 if ori == 2:
                     ori = 0
-                temp[j] = (prod[pair[0]][0], ori)
+                temp[j] = (constant.MOVES_E[moves[i]][c][0], ori)
             prod = temp
         return prod
 
