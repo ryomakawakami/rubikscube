@@ -1,6 +1,6 @@
 # Order of corners and edges
 URF, UFL, ULB, UBR, DFR, DLF, DBL, DRB = range(8)
-UR, UF, UL, UB, DR, DF, DL, DB, FR, FL ,BL, BR = range(12)
+UR, UF, UL, UB, DR, DF, DL, DB, FR, FL, BL, BR = range(12)
 
 FACE_MOVE = ['U', 'R', 'F', 'D', 'L', 'B']
 
@@ -30,4 +30,31 @@ MOVES_E = {
         (9, 0, 1), (7, 0, 0), (8, 0, 0), (2, 0, 1), (6, 0, 1), (11, 0, 0)],
     'B': [(0, 0, 0), (1, 0, 0), (2, 0, 0), (11, 1, 1), (4, 0, 0), (5, 0, 0),
         (6, 0, 0), (10, 1, 1), (8, 0, 0), (9, 0, 0), (3, 1, 1), (7, 1, 1)]
+}
+
+# Colors in orientation 0 with reference facelet first (and cw order for corners)
+CORNER_COLOR = {
+    URF: ('w', 'r', 'g'),
+    UFL: ('w', 'g', 'o'),
+    ULB: ('w', 'o', 'b'),
+    UBR: ('w', 'b', 'r'),
+    DFR: ('y', 'g', 'r'),
+    DLF: ('y', 'o', 'g'),
+    DBL: ('y', 'b', 'o'),
+    DRB: ('y', 'r', 'b')
+}
+
+EDGE_COLOR = {
+    UR: ('w', 'r'),
+    UF: ('w', 'g'),
+    UL: ('w', 'o'),
+    UB: ('w', 'b'),
+    DR: ('y', 'r'),
+    DF: ('y', 'g'),
+    DL: ('y', 'o'),
+    DB: ('y', 'b'),
+    FR: ('g', 'r'),
+    FL: ('g', 'o'),
+    BL: ('b', 'o'),
+    BR: ('b', 'r')
 }
