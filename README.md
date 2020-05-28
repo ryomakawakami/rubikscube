@@ -12,3 +12,7 @@ The corner 0 is URF, 1 is UFL, and so on. Similarly for edges.
 CORNERS = ['URF', 'UFL', 'ULB', 'UBR', 'DFR', 'DLF', 'DBL', 'DRB']
 EDGES = ['UR', 'UF', 'UL', 'UB', 'DR', 'DF', 'DL', 'DB', 'FR', 'FL', 'BL', 'BR']
 ```
+
+Todo:
+
+Generate cubie cube from coordinates.
