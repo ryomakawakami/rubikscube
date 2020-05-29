@@ -107,3 +107,18 @@ class Cube:
             self.corners = [(self.corners[i][0], (self.corners[i][1] + j) % 3) for i, j in cornerT]
             edgeT = self.edgeMult(text)
             self.edges = [(self.edges[i][0], self.edges[i][1] ^ j) for i, j in edgeT]
+
+    def handScramble(self, s):
+        # Convert scramble to primitive moves
+        length = int(len(s) / 3) + 1
+        scramble = ''
+        for i in range(length):
+            scramble += s[i * 3] * int(s[i * 3 + 1])
+
+        # Get transformations
+        cornerT = self.cornerMult(scramble)
+        edgeT = self.edgeMult(scramble)
+
+        # Apply
+        self.corners = [(self.corners[i][0], (self.corners[i][1] + j) % 3) for i, j in cornerT]
+        self.edges = [(self.edges[i][0], self.edges[i][1] ^ j) for i, j in edgeT]

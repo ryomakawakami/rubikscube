@@ -17,7 +17,7 @@ EDGES = ('UR', 'UF', 'UL', 'UB', 'DR', 'DF', 'DL', 'DB', 'FR', 'FL', 'BL', 'BR')
 
 ---
 
-### Facelet Representation
+## Facelet Representation
 
 For facelet representation, put your scramble in facelet_rep/main, and run
 
@@ -25,7 +25,7 @@ For facelet representation, put your scramble in facelet_rep/main, and run
 python -m facelet_rep
 ```
 
-### Cubie Representation
+## Cubie Representation
 
 For cubie representation, put your scramble in cubie_rep/main. R is 'R1', R2 is 'R2', R' is 'R3'. Then run
 
@@ -37,6 +37,6 @@ This implementation uses multiplication for a whole sequence of moves.
 
 ---
 
-### Todo
+## Todo
 
-Generate cubie cube from coordinates.
+Generate cubie cube from coordinates. And vice versa.

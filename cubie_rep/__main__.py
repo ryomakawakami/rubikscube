@@ -5,6 +5,6 @@ if __name__ == '__main__':
 
     cube = cubie.Cube()
 
-    cube.turn('R2')
+    cube.handScramble('R1 U1 R3 F3 R1 U1 R3 U3 R3 F1 R2 U3 R3')
 
     cube.display()
