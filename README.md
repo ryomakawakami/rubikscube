@@ -1,18 +1,42 @@
 # rubikscube
 
-This project references http://kociemba.org/cube.htm
+Run
 
-Implemented at cubie level. Preparation for Kociemba two phase.
+```
+python -m rubikscube
+```
 
-Normal cube notation R, R2, R' are written as R1, R2, R3.
+This project references http://kociemba.org/cube.htm.
 
 The corner 0 is URF, 1 is UFL, and so on. Similarly for edges.
 
 ```
-CORNERS = ['URF', 'UFL', 'ULB', 'UBR', 'DFR', 'DLF', 'DBL', 'DRB']
-EDGES = ['UR', 'UF', 'UL', 'UB', 'DR', 'DF', 'DL', 'DB', 'FR', 'FL', 'BL', 'BR']
+CORNERS = ('URF', 'UFL', 'ULB', 'UBR', 'DFR', 'DLF', 'DBL', 'DRB')
+EDGES = ('UR', 'UF', 'UL', 'UB', 'DR', 'DF', 'DL', 'DB', 'FR', 'FL', 'BL', 'BR')
 ```
 
-Todo:
+---
+
+### Facelet Representation
+
+For facelet representation, put your scramble in facelet_rep/main, and run
+
+```
+python -m facelet_rep
+```
+
+### Cubie Representation
+
+For cubie representation, put your scramble in cubie_rep/main. R is 'R1', R2 is 'R2', R' is 'R3'. Then run
+
+```
+python -m cubie_rep
+```
+
+This implementation uses multiplication for a whole sequence of moves.
+
+---
+
+### Todo
 
 Generate cubie cube from coordinates.
