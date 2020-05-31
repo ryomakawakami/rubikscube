@@ -6,9 +6,9 @@ class Cube:
         self.corners = [[i, 0] for i in range(8)]
         self.edges = [[i, 0] for i in range(12)]
 
-    ######################################################
+    ##################################################
+    ####            Corner orientation            ####
 
-    # Corner orientation coordinate (0 to 3^7 - 1)
     def getCO(self):
         c = 0
         for i in range(7):
@@ -25,9 +25,35 @@ class Cube:
             self.corners[i][1] = digit
             sum += digit
 
-        self.corners[7][1] = digit % 3
+        x = sum % 3
+        if x == 1:
+            x = 2
+        elif x == 2:
+            x = 1
+        self.corners[7][1] = x
 
-    ######################################################
+    ################################################
+    ####            Edge orientation            ####
+
+    def getEO(self):
+        c = 0
+        for i in range(11):
+            c = 2 * c + self.edges[i][1]
+        return c
+
+    def setEO(self, c):
+        sum = 0
+
+        # 10 to 0
+        for i in range(10, -1, -1):
+            digit = c % 2
+            c >>= 1
+            self.edges[i][1] = digit
+            sum += digit
+
+        self.edges[11][1] = sum % 2
+
+    ################################################
 
     def display(self):
         # 0 to 54, with order being WWW * 3 + OOO GGG RRR BBB * 3 + YYY * 3
