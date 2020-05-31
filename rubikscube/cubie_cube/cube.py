@@ -90,7 +90,26 @@ class Cube:
                 self.edges[i][0] = count1
                 count1 += 1
     
-    ########################################
+    ##########################################
+    ####            UD slice 2            ####
+
+    def getUD2(self):
+        arr = []
+        for i in range(12):
+            edge = self.edges[i][0]
+            if edge >= constant.FR:
+                arr.append(edge)
+
+        x = 0
+        for i in range(3, 0, -1):
+            c = 0
+            for j in range(i - 1, -1, -1):
+                if arr[j] > arr[i]:
+                    c += 1
+            x = (x + c) * i
+
+        #return self.getUD1() * 24 + x
+        return x
 
     def display(self):
         # 0 to 54, with order being WWW * 3 + OOO GGG RRR BBB * 3 + YYY * 3
