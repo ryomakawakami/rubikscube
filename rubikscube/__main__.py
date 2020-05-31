@@ -8,10 +8,7 @@ if __name__ == '__main__':
     #cube.turn('R1')
     #cube.display()
 
-    #cube.setCO(1494)
-    #print(cube.getCO())
-
-    cube.setEO(2047)
-    print(cube.getEO())
+    cube.setUDEdges(0, 1, 2, 3)
+    print(cube.getUD())
 
     cube.display()

@@ -1,4 +1,5 @@
 import rubikscube.cubie_cube.constant as constant
+from scipy.special import comb
 
 class Cube:
     def __init__(self):
@@ -53,7 +54,43 @@ class Cube:
 
         self.edges[11][1] = sum % 2
 
-    ################################################
+    ##########################################
+    ####            UD slice 1            ####
+
+    def getUD1(self):
+        occupied = [False for i in range(12)]
+
+        for i in range(12):
+            # If edge is UD slice edge
+            if self.edges[i][0] >= constant.FR:
+                occupied[i] = True
+
+        c = 0
+        k = 3
+        n = 11
+        while k >= 0:
+            if occupied[n]:
+                k -= 1
+            else:
+                c = c + comb(n, k, exact=True);
+                n -= 1
+
+        return c
+
+    # Given a clean cube, set UD edges to a, b, c, d
+    # Easiest way to implement setUD
+    def setUDEdges(self, a, b, c, d):
+        count1 = 0
+        count2 = 8
+        for i in range(12):
+            if i == a or i == b or i == c or i == d:
+                self.edges[i][0] = count2
+                count2 += 1
+            else:
+                self.edges[i][0] = count1
+                count1 += 1
+    
+    ########################################
 
     def display(self):
         # 0 to 54, with order being WWW * 3 + OOO GGG RRR BBB * 3 + YYY * 3
