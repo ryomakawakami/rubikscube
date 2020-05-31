@@ -111,6 +111,40 @@ class Cube:
         #return self.getUD1() * 24 + x
         return x
 
+    ##################################################
+    ####            Corner permutation            ####
+
+    def getCP(self):
+        x = 0
+        for i in range(7, 0, -1):   # 7 to 1
+            c = 0
+            for j in range(i - 1, -1, -1):  # i - 1 to 0
+                if self.corners[j][0] > self.corners[i][0]:
+                    c += 1
+            x = (x + c) * i
+        return x
+
+    def setCP(self, corners):
+        self.corners = corners
+
+    ################################################
+    ####            Edge permutation            ####
+
+    def getEP(self):
+        x = 0
+        for i in range(7, 0, -1):   # 7 to 1
+            c = 0
+            for j in range(i - 1, -1, -1):  # i - 1 to 0
+                if self.edges[j][0] > self.edges[i][0]:
+                    c += 1
+            x = (x + c) * i
+        return x
+
+    def setEP(self, edges):
+        self.edges = edges
+
+    ################################################
+
     def display(self):
         # 0 to 54, with order being WWW * 3 + OOO GGG RRR BBB * 3 + YYY * 3
         facelets = ['' for i in range(54)]
