@@ -5,6 +5,10 @@ if __name__ == '__main__':
 
     cube = cubie.Cube()
 
-    cube.turn('R2')
+    #cube.turn('R1')
+    #cube.display()
+
+    cube.setCO(1494)
+    print(cube.getCO())
 
     cube.display()
