@@ -5,6 +5,7 @@ UR, UF, UL, UB, DR, DF, DL, DB, FR, FL, BL, BR = range(12)
 FACE_MOVE = ('U', 'R', 'F', 'D', 'L', 'B')
 MOVES = ('U1', 'U2', 'U3', 'R1', 'R2', 'R3', 'F1', 'F2', 'F3',
     'D1', 'D2', 'D3', 'L1', 'L2', 'L3', 'B1', 'B2', 'B3')
+G1 = ('U1', 'D1', 'R2', 'L2', 'F2', 'B2')
 
 # "Replaced by" representation (e.g. In U, URF is replaced by UBR with orientation 0)
 # (corner piece, orientation)
