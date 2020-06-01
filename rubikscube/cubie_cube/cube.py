@@ -77,13 +77,13 @@ class Cube:
 
         return c
 
-    # Given a clean cube, set UD edges to a, b, c, d
+    # Given a clean cube, set UD edges to x, a list
     # Easiest way to implement setUD
-    def setUDEdges(self, a, b, c, d):
+    def setUDEdges(self, x):
         count1 = 0
         count2 = 8
         for i in range(12):
-            if i == a or i == b or i == c or i == d:
+            if i in x:
                 self.edges[i][0] = count2
                 count2 += 1
             else:

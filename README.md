@@ -39,4 +39,4 @@ This implementation uses multiplication for a whole sequence of moves.
 
 ## Todo
 
-Generate cubie cube from coordinates. And vice versa.
+Move tables. Pruning tables.
