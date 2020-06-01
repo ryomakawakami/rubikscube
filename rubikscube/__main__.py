@@ -6,13 +6,15 @@ if __name__ == '__main__':
     print('Cube')
 
     coMove, eoMove, udMove1 = move_table.phase1()
-    coPrune = pruning_table.generateCO(coMove)
+    coPrune = pruning_table.generate(coMove)
+    eoPrune = pruning_table.generate(eoMove)
+    udPrune1 = pruning_table.generate(udMove1)
 
     cube = cubie.Cube()
 
+    cube.turn('F1')
     cube.turn('R1')
-    cube.turn('U1')
-    cube.turn('R3')
-    cube.turn('R1')
-    print(cube.getCO())
+
     print(coPrune[cube.getCO()])
+    print(eoPrune[cube.getEO()])
+    print(udPrune1[cube.getUD1()])

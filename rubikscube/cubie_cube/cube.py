@@ -72,8 +72,8 @@ class Cube:
             if occupied[n]:
                 k -= 1
             else:
-                c = c + comb(n, k, exact=True);
-                n -= 1
+                c += comb(n, k, exact=True)
+            n -= 1
 
         return c
 

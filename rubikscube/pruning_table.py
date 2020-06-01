@@ -1,10 +1,11 @@
-def generateCO(moveTable):
+def generate(moveTable):
+    length = len(moveTable)
     counter = 0
-    pruningTable = [-1 for i in range(2187)]
+    pruningTable = [-1 for i in range(length)]
     pruningTable[0] = 0
     depth = 0
     buffer = [0]    # Coordinates at current depth
-    while counter < 2187 / 2:
+    while counter < length / 2:
         temp = []
         for coord in buffer:
             for newCoord in moveTable[coord]:
@@ -16,7 +17,7 @@ def generateCO(moveTable):
         depth += 1
 
     buffer = [i for i in range(len(pruningTable)) if pruningTable[i] == -1]
-    while counter < 2186:
+    while counter < length - 1:
         for coord in buffer:
             for newCoord in moveTable[coord]:
                 if pruningTable[newCoord] >= 0:
@@ -26,3 +27,4 @@ def generateCO(moveTable):
                     break
 
     return pruningTable
+    
