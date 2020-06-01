@@ -1,5 +1,6 @@
 import rubikscube.cubie_cube.constant as constant
 from scipy.special import comb
+import random
 
 class Cube:
     def __init__(self):
@@ -206,3 +207,40 @@ class Cube:
     def turn(self, s):
         self.corners = [[self.corners[i][0], (self.corners[i][1] + j) % 3] for i, j in constant.MOVES_C[s]]
         self.edges = [[self.edges[i][0], self.edges[i][1] ^ j] for i, j in constant.MOVES_E[s]]
+
+    def scramble(self):
+        self.mixEven(self.corners)
+        self.mixEven(self.edges)
+        if random.randint(0, 1) == 1:
+            self.corners[0], self.corners[1] = self.corners[1], self.corners[0]
+            self.edges[0], self.edges[1] = self.edges[1], self.edges[0]
+
+        sum = 0
+        for i in range(7):
+            x = random.randint(0, 2)
+            self.corners[i][1] = x
+            sum += x
+        if sum % 3 == 0:
+            self.corners[7][1] = 0
+        elif sum % 3 == 1:
+            self.corners[7][1] = 2
+        else:
+            self.corners[7][1] = 1
+            
+        sum = 0
+        for i in range(11):
+            x = random.randint(0, 1)
+            self.edges[i][1] = x
+            sum += x
+        if sum % 2 == 0:
+            self.edges[11][1] = 0
+        else:
+            self.edges[11][1] = 1
+
+    def mixEven(self, x):
+        N = len(x)
+        for i in range(N - 3):
+            r = random.randint(i, N - 1)
+            if i != r:
+                x[i], x[r] = x[r], x[i]
+                x[N-1], x[N-2] = x[N-2], x[N-1]

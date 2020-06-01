@@ -26,13 +26,9 @@ def phase1():
     for comb in itertools.combinations(range(12), 4):
         cube.setUDEdges(list(comb))
         coord = cube.getUD1()
-        #if coord == 0:
-        #    print(list(comb))
         for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
             for k in range(4):  # k = 4 restores to original
                 cube.turn(move)
-                #if coord == 0 and move == 'F1':
-                #    print(cube.getUD1())
                 if k != 3:
                     udCoord1[coord][3 * j + k] = cube.getUD1()
 
