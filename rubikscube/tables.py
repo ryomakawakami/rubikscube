@@ -7,3 +7,9 @@ class Table:
         self.coPrune = pruning_table.generate(self.coMove)
         self.eoPrune = pruning_table.generate(self.eoMove)
         self.udPrune1 = pruning_table.generate(self.udMove1)
+
+        self.cpMove, self.epMove, self.udMove2 = move_table.phase2()
+        #print(self.udMove2)
+        self.cpPrune = pruning_table.generate(self.cpMove)
+        self.epPrune = pruning_table.generate(self.epMove)
+        self.udPrune2 = pruning_table.generate(self.udMove2)

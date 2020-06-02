@@ -35,4 +35,38 @@ def phase1():
     return coCoord, eoCoord, udCoord1
 
 def phase2():
-    pass
+    cube = cubie.Cube()
+
+    cpCoord = [[0 for i in range(18)] for j in range(40320)]
+    for comb in itertools.permutations(range(8), 8):
+        cube.setCP(list(comb))
+        coord = cube.getCP()
+        for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
+            for k in range(4):  # k = 4 restores to original
+                cube.turn(move)
+                if k != 3:
+                    cpCoord[coord][3 * j + k] = cube.getCP()
+
+    epCoord = [[0 for i in range(18)] for j in range(40320)]
+    for comb in itertools.permutations(range(8), 8):
+        cube.setEP(list(comb))
+        coord = cube.getEP()
+        for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
+            for k in range(4):  # k = 4 restores to original
+                cube.turn(move)
+                if k != 3:
+                    epCoord[coord][3 * j + k] = cube.getEP()
+
+    udCoord2 = [[0 for i in range(18)] for j in range(24)]
+    for comb in itertools.permutations([8, 9, 10, 11], 4):
+        cube.setUDEdges(list(comb))
+        coord = cube.getUD2()
+        print(cube.edges)
+        print(list(comb))
+        for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
+            for k in range(4):  # k = 4 restores to original
+                cube.turn(move)
+                if k != 3:
+                    udCoord2[coord][3 * j + k] = cube.getUD2()
+
+    return cpCoord, epCoord, udCoord2

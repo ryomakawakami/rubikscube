@@ -109,8 +109,8 @@ class Cube:
                     c += 1
             x = (x + c) * i
 
-        #return self.getUD1() * 24 + x
-        return x
+        return self.getUD1() * 24 + x
+        #return x
 
     ##################################################
     ####            Corner permutation            ####
@@ -126,7 +126,7 @@ class Cube:
         return x
 
     def setCP(self, corners):
-        self.corners = corners
+        self.corners = [[corner, 0] for corner in corners]
 
     ################################################
     ####            Edge permutation            ####
@@ -142,7 +142,8 @@ class Cube:
         return x
 
     def setEP(self, edges):
-        self.edges = edges
+        for i, edge in enumerate(edges):
+            self.edges[i][0] = edge
 
     ################################################
 
