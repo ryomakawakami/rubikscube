@@ -1,20 +1,28 @@
+import numpy as np
+
 def generate(moveTable):
     length = len(moveTable)
+    numMoves = len(moveTable[0])
     counter = 0
     pruningTable = [-1 for i in range(length)]
     pruningTable[0] = 0
     depth = 0
     buffer = [0]    # Coordinates at current depth
-    while counter < length / 2:
-        temp = []
+    i = 1
+    while counter < length / 2 and counter < 9000:
+        temp = np.empty(numMoves ** i, dtype=np.uint16)
+        j = 0
         for coord in buffer:
             for newCoord in moveTable[coord]:
                 if pruningTable[newCoord] == -1:
                     pruningTable[newCoord] = depth + 1
                     counter += 1
-                temp.append(newCoord)
+                temp[j] = newCoord
+                j += 1
         buffer = temp
         depth += 1
+        i += 1
+        print(counter, len(temp))
 
     buffer = [i for i in range(len(pruningTable)) if pruningTable[i] == -1]
     while counter < length - 1:

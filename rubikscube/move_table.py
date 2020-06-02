@@ -37,36 +37,50 @@ def phase1():
 def phase2():
     cube = cubie.Cube()
 
-    cpCoord = [[0 for i in range(18)] for j in range(40320)]
-    for comb in itertools.permutations(range(8), 8):
+    perms = itertools.permutations(range(8), 8)
+
+    cpCoord = [[0 for i in range(10)] for j in range(40320)]
+    for comb in perms:
         cube.setCP(list(comb))
         coord = cube.getCP()
-        for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
+        for j, move in enumerate(['U1', 'D1']):
             for k in range(4):  # k = 4 restores to original
                 cube.turn(move)
                 if k != 3:
                     cpCoord[coord][3 * j + k] = cube.getCP()
+        for j, move in enumerate(['R2', 'L2', 'F2', 'B2']):
+            cube.turn(move)
+            cpCoord[coord][j + 6] = cube.getCP()
+            cube.turn(move)
 
-    epCoord = [[0 for i in range(18)] for j in range(40320)]
-    for comb in itertools.permutations(range(8), 8):
+    perms = itertools.permutations(range(8), 8)
+
+    epCoord = [[0 for i in range(10)] for j in range(40320)]
+    for comb in perms:
         cube.setEP(list(comb))
         coord = cube.getEP()
-        for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
+        for j, move in enumerate(['U1', 'D1']):
             for k in range(4):  # k = 4 restores to original
                 cube.turn(move)
                 if k != 3:
                     epCoord[coord][3 * j + k] = cube.getEP()
+        for j, move in enumerate(['R2', 'L2', 'F2', 'B2']):
+            cube.turn(move)
+            epCoord[coord][j + 6] = cube.getEP()
+            cube.turn(move)
 
-    udCoord2 = [[0 for i in range(18)] for j in range(24)]
+    udCoord2 = [[0 for i in range(10)] for j in range(24)]
     for comb in itertools.permutations([8, 9, 10, 11], 4):
-        cube.setUDEdges(list(comb))
+        cube.setUDEdges2(list(comb))
         coord = cube.getUD2()
-        print(cube.edges)
-        print(list(comb))
-        for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
+        for j, move in enumerate(['U1', 'D1']):
             for k in range(4):  # k = 4 restores to original
                 cube.turn(move)
                 if k != 3:
                     udCoord2[coord][3 * j + k] = cube.getUD2()
+        for j, move in enumerate(['R2', 'L2', 'F2', 'B2']):
+            cube.turn(move)
+            udCoord2[coord][j + 6] = cube.getUD2()
+            cube.turn(move)
 
     return cpCoord, epCoord, udCoord2

@@ -90,6 +90,18 @@ class Cube:
             else:
                 self.edges[i][0] = count1
                 count1 += 1
+
+    # Sets edges 8, 9, 10, 11 in specified order
+    def setUDEdges2(self, x):
+        count1 = 0
+        count2 = 0
+        for i in range(12):
+            if i in x:
+                self.edges[i][0] = x[count2]
+                count2 += 1
+            else:
+                self.edges[i][0] = count1
+                count1 += 1
     
     ##########################################
     ####            UD slice 2            ####

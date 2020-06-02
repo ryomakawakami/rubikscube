@@ -39,6 +39,4 @@ This implementation uses multiplication for a whole sequence of moves.
 
 ## Todo
 
-Phase 2 move tables only need to have G1 moves.
-
-Something wrong with get UD 2. Adjust set UD edges so the order is set for UD2. Currently, 8,9,10,11 regardless.
+Phase 2 should not keep generating same length solutions.
