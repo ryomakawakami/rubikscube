@@ -9,7 +9,8 @@ def generate(moveTable):
     depth = 0
     buffer = [0]    # Coordinates at current depth
     i = 1
-    while counter < length / 2 and counter < 9000:
+    #while counter < length / 2 and counter < 9000:
+    while counter < length / 4 and counter < 5000:
         temp = np.empty(numMoves ** i, dtype=np.uint16)
         j = 0
         for coord in buffer:

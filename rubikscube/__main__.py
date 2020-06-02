@@ -18,7 +18,9 @@ def phase1(p, d, solution):
         if p == [0, 0, 0] and len(solution) > 0:
             if solution[-2] in ['R', 'L', 'F', 'B']:
                 if solution[-1] == '1':
-                    print(solution)
+                    for i in range(0, len(solution) // 2):
+                        print(solution[i*2:i*2+2], end=' ')
+                    print()
                     p1Length = len(solution) // 2
                     phase2start(solution)
     elif d > 0:
@@ -54,7 +56,10 @@ def phase2(p, d, solution):
             global maxLength
             currentDepth = len(solution) // 2 + p1Length
             if currentDepth < maxLength:
-                print("2: " + solution)
+                print("2: ")
+                for i in range(0, len(solution) // 2):
+                    print(solution[i*2:i*2+2], end=' ')
+                print()
                 maxLength = currentDepth - 1
     elif d > 0:
         if max(t.cpPrune[p[0]], t.epPrune[p[1]], t.udPrune2[p[2]]) <= d:
