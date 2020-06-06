@@ -2,7 +2,13 @@ import rubikscube.cubie_cube.cube as cubie
 import rubikscube.cubie_cube.constant as constant
 from rubikscube.tables import Table
 
+import rubikscube.scanner.reader.reader as reader
+import rubikscube.scanner.filter_cube as filter
+
+import rubikscube.to_cubie
+
 import sys
+import os
 
 maxLength = 10000
 p1Length = 0
@@ -77,9 +83,24 @@ def phase2(p, d, solution):
 
 t = Table()
 
-cube = cubie.Cube()
+#cube = cubie.Cube()
+#cube.scramble()
 
-cube.scramble()
+#####
+imageDir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'images'))
+pic1 = os.path.join(imageDir, 'r1.jpg')
+pic2 = os.path.join(imageDir, 'r2.jpg')
+bad = os.path.join(imageDir, 'bad.png')
+
+cubeList = [[[None for i in range(3)] for j in range(3)] for k in range(6)]
+
+reader.reader(cubeList, pic1)
+reader.reader(cubeList, pic2)
+
+facelet_cube = filter.filterCube(cubeList)
+cube = rubikscube.to_cubie.toCubie(facelet_cube)
+#####
+
 cube.display()
 
 p = [cube.getCO(), cube.getEO(), cube.getUD1()]

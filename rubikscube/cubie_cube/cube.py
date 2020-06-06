@@ -34,6 +34,10 @@ class Cube:
             x = 1
         self.corners[7][1] = x
 
+    def directSetCO(self, co):
+        for i, o in enumerate(co):
+            self.corners[i][1] = o
+
     ################################################
     ####            Edge orientation            ####
 
@@ -54,6 +58,10 @@ class Cube:
             sum += digit
 
         self.edges[11][1] = sum % 2
+
+    def directSetEO(self, eo):
+        for i, o in enumerate(eo):
+            self.edges[i][1] = o
 
     ##########################################
     ####            UD slice 1            ####
