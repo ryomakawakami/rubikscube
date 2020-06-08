@@ -1,10 +1,11 @@
 import rubikscube.cubie_cube.cube as cubie
 import itertools
+import numpy as np
 
 def phase1():
     cube = cubie.Cube()
 
-    coCoord = [[0 for i in range(18)] for j in range(2187)]
+    coCoord = np.empty(shape=(2187, 18), dtype=np.uint16)
     for i in range(2187):
         cube.setCO(i)
         for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
@@ -13,7 +14,7 @@ def phase1():
                 if k != 3:
                     coCoord[i][3 * j + k] = cube.getCO()
 
-    eoCoord = [[0 for i in range(18)] for j in range(2048)]
+    eoCoord = np.empty(shape=(2048, 18), dtype=np.uint16)
     for i in range(2048):
         cube.setEO(i)
         for j, move in enumerate(['U1', 'R1', 'F1', 'D1', 'L1', 'B1']):
@@ -22,7 +23,7 @@ def phase1():
                 if k != 3:
                     eoCoord[i][3 * j + k] = cube.getEO()
 
-    udCoord1 = [[0 for i in range(18)] for j in range(495)]
+    udCoord1 = np.empty(shape=(495, 18), dtype=np.uint16)
     for comb in itertools.combinations(range(12), 4):
         cube.setUDEdges(list(comb))
         coord = cube.getUD1()
@@ -39,7 +40,7 @@ def phase2():
 
     perms = itertools.permutations(range(8), 8)
 
-    cpCoord = [[0 for i in range(10)] for j in range(40320)]
+    cpCoord = np.empty(shape=(40320, 10), dtype=np.uint16)
     for comb in perms:
         cube.setCP(list(comb))
         coord = cube.getCP()
@@ -55,7 +56,7 @@ def phase2():
 
     perms = itertools.permutations(range(8), 8)
 
-    epCoord = [[0 for i in range(10)] for j in range(40320)]
+    epCoord = np.empty(shape=(40320, 10), dtype=np.uint16)
     for comb in perms:
         cube.setEP(list(comb))
         coord = cube.getEP()
@@ -69,7 +70,7 @@ def phase2():
             epCoord[coord][j + 6] = cube.getEP()
             cube.turn(move)
 
-    udCoord2 = [[0 for i in range(10)] for j in range(24)]
+    udCoord2 = np.empty(shape=(24, 10), dtype=np.uint16)
     for comb in itertools.permutations([8, 9, 10, 11], 4):
         cube.setUDEdges2(list(comb))
         coord = cube.getUD2()
