@@ -42,7 +42,7 @@ def phase2():
 
     cpCoord = np.empty(shape=(40320, 10), dtype=np.uint16)
     for comb in perms:
-        cube.setCP(list(comb))
+        cube.setCP(comb)
         coord = cube.getCP()
         for j, move in enumerate(['U1', 'D1']):
             for k in range(4):  # k = 4 restores to original
@@ -58,7 +58,7 @@ def phase2():
 
     epCoord = np.empty(shape=(40320, 10), dtype=np.uint16)
     for comb in perms:
-        cube.setEP(list(comb))
+        cube.setEP(comb)
         coord = cube.getEP()
         for j, move in enumerate(['U1', 'D1']):
             for k in range(4):  # k = 4 restores to original
@@ -72,7 +72,7 @@ def phase2():
 
     udCoord2 = np.empty(shape=(24, 10), dtype=np.uint16)
     for comb in itertools.permutations([8, 9, 10, 11], 4):
-        cube.setUDEdges2(list(comb))
+        cube.setUDEdges2(comb)
         coord = cube.getUD2()
         for j, move in enumerate(['U1', 'D1']):
             for k in range(4):  # k = 4 restores to original

@@ -4,7 +4,8 @@ def generate(moveTable):
     length = len(moveTable)
     numMoves = len(moveTable[0])
     counter = 0
-    pruningTable = [-1 for i in range(length)]
+    pruningTable = np.empty(length)
+    pruningTable.fill(-1)
     pruningTable[0] = 0
     depth = 0
     buffer = [0]    # Coordinates at current depth
@@ -25,6 +26,19 @@ def generate(moveTable):
         i += 1
         print(counter, len(temp))
 
+# This significantly speeds up pruning table creation
+# but for some reason it makes all of the solutions longer
+#    buffer = np.where(pruningTable < 0)[0]
+#    while counter < length - 1:
+#        for coord in buffer:
+#            if pruningTable[coord] != -1:
+#                continue
+#            for newCoord in moveTable[coord]:
+#                if pruningTable[newCoord] >= 0:
+#                    pruningTable[coord] = pruningTable[newCoord] + 1
+#                    counter += 1
+#                    break
+
     buffer = [i for i in range(len(pruningTable)) if pruningTable[i] == -1]
     while counter < length - 1:
         for coord in buffer:
@@ -36,4 +50,3 @@ def generate(moveTable):
                     break
 
     return pruningTable
-    

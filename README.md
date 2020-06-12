@@ -42,5 +42,3 @@ This implementation uses multiplication for a whole sequence of moves.
 Phase 2 should not keep generating same length solutions.
 
 WGR corner not moving.
-
-Optimize getUDCoord2.
