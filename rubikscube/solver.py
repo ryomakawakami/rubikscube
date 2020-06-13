@@ -2,6 +2,8 @@ from rubikscube.tables import Table
 import rubikscube.cubie_cube.cube as cubie
 import rubikscube.cubie_cube.constant as constant
 
+import copy
+
 class Solver:
     def __init__(self):
         self.table = Table()
@@ -19,14 +21,13 @@ class Solver:
 
     def phase1(self, p, d, solution):
         if d == 0:
-            if p == [0, 0, 0] and len(solution) > 0:
-                if solution[-2] in ['R', 'L', 'F', 'B']:
-                    if solution[-1] == '1':
-                        for i in range(0, len(solution) // 2):
-                            print(solution[i*2:i*2+2], end=' ')
-                        print()
-                        self.p1Length = len(solution) // 2
-                        self.phase2start(solution)
+            if p == [0, 0, 0]:
+                if len(solution) == 0 or (solution[-2] in ['R', 'L', 'F', 'B'] and solution[-1] in ['1', '3']):
+                    for i in range(0, len(solution) // 2):
+                        print(solution[i*2:i*2+2], end=' ')
+                    print()
+                    self.p1Length = len(solution) // 2
+                    self.phase2start(solution)
         elif d > 0:
             if max(self.table.coPrune[p[0]], self.table.eoPrune[p[1]], self.table.udPrune1[p[2]]) <= d:
                 # Should filter out moves depending on last move
@@ -42,28 +43,31 @@ class Solver:
                     self.phase1(newP, d - 1, solution + move)
 
     def phase2start(self, solution):
-        currentDepth = len(solution) // 2
         cube2 = cubie.Cube()
-        cube2.corners = self.cube.corners
-        cube2.edges = self.cube.edges
+        cube2.corners = copy.copy(self.cube.corners)
+        cube2.edges = copy.copy(self.cube.edges)
         for i in range(0, len(solution) // 2):
             cube2.turn(solution[i*2:i*2+2])
         p = [cube2.getCP(), cube2.getEP(), cube2.getUD2()]
         d = 0
-        while d <= self.maxLength - currentDepth:
+        while d <= self.maxLength - self.p1Length:
             self.phase2(p, d, '')
             d += 1
 
     def phase2(self, p, d, solution):
+        if self.p1Length + len(solution) // 2 >= self.maxLength:
+            return
         if d == 0:
             if p == [0, 0, 0]:
-                currentDepth = len(solution) // 2 + self.p1Length
+                currentDepth = self.p1Length + len(solution) // 2
+                print("Current: " + str(currentDepth))
                 if currentDepth < self.maxLength:
                     print("2: ")
                     for i in range(0, len(solution) // 2):
                         print(solution[i*2:i*2+2], end=' ')
                     print()
                     self.maxLength = currentDepth - 1
+                    print(self.maxLength)
         elif d > 0:
             if max(self.table.cpPrune[p[0]], self.table.epPrune[p[1]], self.table.udPrune2[p[2]]) <= d:
                 # Should filter out moves depending on last move

@@ -40,5 +40,3 @@ This implementation uses multiplication for a whole sequence of moves.
 ## Todo
 
 Phase 2 should not keep generating same length solutions.
-
-WGR corner not moving.

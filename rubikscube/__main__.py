@@ -35,6 +35,5 @@ cube.display()
 
 if __name__ == '__main__':
     print('Cube')
-
-    #phase2start('R2')
+    
     s.kociemba(cube)
