@@ -55,7 +55,7 @@ class Solver:
             d += 1
 
     def phase2(self, p, d, solution):
-        if self.p1Length + len(solution) // 2 >= self.maxLength:
+        if self.p1Length + len(solution) // 2 > self.maxLength:
             return
         if d == 0:
             if p == [0, 0, 0]:

@@ -39,4 +39,11 @@ This implementation uses multiplication for a whole sequence of moves.
 
 ## Todo
 
-Phase 2 should not keep generating same length solutions.
+Great test case (10 -> 4 -> 3)
+
+```
+cube = cubie.Cube()
+cube.turn('L1')
+cube.turn('R3')
+cube.turn('F2')
+```

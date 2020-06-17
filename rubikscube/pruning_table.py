@@ -39,14 +39,17 @@ def generate(moveTable):
 #                    counter += 1
 #                    break
 
-    buffer = [i for i in range(len(pruningTable)) if pruningTable[i] == -1]
+    buffer = np.where(pruningTable == -1)[0]
+    done = np.zeros(buffer.size, dtype=np.bool_)
     while counter < length - 1:
-        for coord in buffer:
-            for newCoord in moveTable[coord]:
-                if pruningTable[newCoord] >= 0:
-                    pruningTable[coord] = pruningTable[newCoord] + 1
-                    counter += 1
-                    buffer.remove(coord)
-                    break
+        for i in range(len(buffer)):
+            if done[i] == False:
+                coord = buffer[i]
+                for newCoord in moveTable[coord]:
+                    if pruningTable[newCoord] >= 0:
+                        pruningTable[coord] = pruningTable[newCoord] + 1
+                        counter += 1
+                        done[i] = True
+                        break
 
     return pruningTable
