@@ -36,9 +36,9 @@ cube.display()
 if __name__ == '__main__':
     print('Cube')
 
-    cube = cubie.Cube()
-    cube.turn('L1')
-    cube.turn('R3')
-    cube.turn('F2')
+#    cube = cubie.Cube()
+#    cube.turn('L1')
+#    cube.turn('R3')
+#    cube.turn('F2')
     
     s.kociemba(cube)

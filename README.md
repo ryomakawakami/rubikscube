@@ -47,3 +47,9 @@ cube.turn('L1')
 cube.turn('R3')
 cube.turn('F2')
 ```
+
+Kociemba's implementation
+
+Push move and then pop after recursive call. Have a list of solutions to add to when solution is found as well.
+
+https://github.com/hkociemba/RubiksCube-TwophaseSolver/blob/0e77bf86791e6fae3d5dfa2ee2ecd6622ee11a7f/solver.py#L99
